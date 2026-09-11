@@ -9,22 +9,33 @@ pipeline {
         )
     }
 
+    environment {
+        APP_NAME = 'my-demo-app'
+        PRACTICE_CREDS = credentials('YOUR_CREDENTIAL_ID')
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo "Building application for ${params.ENV}"
+                echo "Building ${APP_NAME} for ${params.ENV}"
             }
         }
 
         stage('Test') {
             steps {
-                echo "Testing application for ${params.ENV}"
+                echo "Testing ${APP_NAME} for ${params.ENV}"
             }
         }
 
         stage('Create Artifact') {
             steps {
                 sh 'echo "This is my Jenkins artifact" > build-output.txt'
+            }
+        }
+
+        stage('Use Credentials') {
+            steps {
+                sh 'echo "Credential username is available to Jenkins"'
             }
         }
     }
