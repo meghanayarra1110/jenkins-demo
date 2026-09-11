@@ -21,10 +21,17 @@ pipeline {
                 echo "Testing application for ${params.ENV}"
             }
         }
+
+        stage('Create Artifact') {
+            steps {
+                sh 'echo "This is my Jenkins artifact" > build-output.txt'
+            }
+        }
     }
 
     post {
         success {
+            archiveArtifacts artifacts: 'build-output.txt'
             echo 'Pipeline completed successfully!'
         }
 
