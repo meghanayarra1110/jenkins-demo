@@ -11,7 +11,7 @@ pipeline {
 
     environment {
         APP_NAME = 'my-demo-app'
-        PRACTICE_CREDS = credentials('YOUR_CREDENTIAL_ID')
+        PRACTICE_CREDS = credentials('e7eb2747-e1aa-4191-b1f4-fd0e661d08b3')
     }
 
     stages {
